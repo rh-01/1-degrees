@@ -69,6 +69,7 @@ def main():
         sys.exit("Person not found.")
 
     path = shortest_path(source, target)
+    print(path)
 
     if path is None:
         print("Not connected.")
@@ -122,7 +123,7 @@ def shortest_path(source, target):
                 actions.append(node.action)
                 cells.append(node.state)
                 s = (node.action, node.state)
-                solution. append(s)
+                solution.append(s)
                 node = node.parent
             actions.reverse()
             cells.reverse()
@@ -135,7 +136,23 @@ def shortest_path(source, target):
         # Add neighbors to frontier
         for action, state in neighbors_for_person(node.state):
             if not frontier.contains_state(state) and state not in explored:
-                child = Node(state=state, parent=node, action=action)
+                child = Node(state=state, parent=node, action=action)  
+                if child.state == target:
+                    actions = []
+                    cells = []
+                    solution = [] 
+                    while child.parent is not None:
+                        actions.append(child.action)
+                        cells.append(child.state)
+                        print(child.state, child.action)
+                        s = (child.action, child.state)
+                        solution.append(s)
+                        child = child.parent
+                    actions.reverse()
+                    cells.reverse()
+                    solution.reverse()
+                    print(solution)
+                    return solution
                 frontier.add(child)
 
 
