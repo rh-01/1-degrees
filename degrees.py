@@ -54,7 +54,7 @@ def load_data(directory):
 def main():
     if len(sys.argv) > 2:
         sys.exit("Usage: python degrees.py [directory]")
-    directory = "small" #sys.argv[1] if len(sys.argv) == 2 else "large"
+    directory = "small" 
 
     # Load data from files into memory
     print("Loading data...")
@@ -95,7 +95,7 @@ def shortest_path(source, target):
     num_explored = 0
 
     # Initialize frontier to just the starting position
-    start = Node(state=source, parent=None, action=None) # RHE: self.start defined in line 67
+    start = Node(state=source, parent=None, action=None) 
     frontier = StackFrontier()
     frontier.add(start)
 
@@ -150,7 +150,7 @@ def person_id_for_name(name):
     person_ids = list(names.get(name.lower(), set()))
     if len(person_ids) == 0:
         return None
-    elif len(person_ids) > 1:  # RHE: if ambiguity
+    elif len(person_ids) > 1: 
         print(f"Which '{name}'?")
         for person_id in person_ids:
             person = people[person_id]
@@ -173,7 +173,7 @@ def neighbors_for_person(person_id):
     Returns (movie_id, person_id) pairs for people
     who starred with a given person.
     """
-    movie_ids = people[person_id]["movies"] # all movies of person investigated 
+    movie_ids = people[person_id]["movies"] 
     neighbors = set()
     for movie_id in movie_ids:
         for person_id in movies[movie_id]["stars"]:
