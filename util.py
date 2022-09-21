@@ -1,8 +1,8 @@
 class Node():
     def __init__(self, state, parent, action):
-        self.state = state
-        self.parent = parent
-        self.action = action
+        self.state = state #RHE: actor
+        self.parent = parent #RHE: linked actor
+        self.action = action #RHE: joint movie
 
 
 class StackFrontier():
@@ -27,7 +27,7 @@ class StackFrontier():
             return node
 
 
-class QueueFrontier(StackFrontier): # RHE: only remove function is overwritten
+class QueueFrontier(StackFrontier): 
 
     def remove(self):
         if self.empty():
